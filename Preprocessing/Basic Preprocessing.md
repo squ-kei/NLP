@@ -105,6 +105,7 @@ def remove_whitespace(text):
 different packages NLTK,spaCy,gensim, keras.preprocessing.text.Tokenizer,etc
 split into sentences, words, characters. why into sentences, words, characters.
 subword algorithms
+keras tokenizer index start from 1 not 0
 ## 8) Common phrases
 ## 9) Padding
 ## 10) Remove stopwords
