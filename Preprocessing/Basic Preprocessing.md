@@ -107,7 +107,48 @@ split into sentences, words, characters. why into sentences, words, characters.
 subword algorithms
 keras tokenizer index start from 1 not 0
 ## 8) Common phrases
+Use gensim package to catch common phrases. https://radimrehurek.com/gensim/models/phrases.html    
+example:
+```python
+>>> from gensim.test.utils import datapath
+>>> from gensim.models.word2vec import Text8Corpus
+>>> from gensim.models.phrases import Phrases, Phraser
+>>>
+>>> # Load training data.
+>>> sentences = Text8Corpus(datapath('testcorpus.txt'))
+>>> # The training corpus must be a sequence (stream, generator) of sentences,
+>>> # with each sentence a list of tokens:
+>>> print(list(sentences)[0][:10])
+['computer', 'human', 'interface', 'computer', 'response', 'survey', 'system', 'time', 'user', 'interface']
+>>>
+>>> # Train a toy bigram model.
+>>> phrases = Phrases(sentences, min_count=1, threshold=1)
+>>> # Apply the trained phrases model to a new, unseen sentence.
+>>> phrases[['trees', 'graph', 'minors']]
+['trees_graph', 'minors']
+>>> # The toy model considered "trees graph" a single phrase => joined the two
+>>> # tokens into a single token, `trees_graph`.
+>>>
+>>> # Update the model with two new sentences on the fly.
+>>> phrases.add_vocab([["hello", "world"], ["meow"]])
+>>>
+>>> # Export the trained model = use less RAM, faster processing. Model updates no longer possible.
+>>> bigram = Phraser(phrases)
+>>> bigram[['trees', 'graph', 'minors']]  # apply the exported model to a sentence
+['trees_graph', 'minors']
+>>>
+>>> # Apply the exported model to each sentence of a corpus:
+>>> for sent in bigram[sentences]:
+...     pass
+>>>
+>>> # Save / load an exported collocation model.
+>>> bigram.save("/tmp/my_bigram_model.pkl")
+>>> bigram_reloaded = Phraser.load("/tmp/my_bigram_model.pkl")
+>>> bigram_reloaded[['trees', 'graph', 'minors']]  # apply the exported model to a sentence
+['trees_graph', 'minors']
+```
 ## 9) Padding
+See tokenization part
 ## 10) Remove stopwords
 Be careful when remove stopwords since this might completely change the meaning of a sentence. Only do this with conventional count based method. Deep learning approach generally does not require removing stopwords. **Do this after tokenization.**   
 With NLTK:
@@ -122,4 +163,6 @@ def remove_stopwords(text):
     filtered_text = [word for word in word_tokens if word not in stop_words] 
     return filtered_text 
 ```
-## 11) Steming, Lematization
+## 11) Steming, Lemmatization
+These are only used for conventinal count based methods. There are a lot of implementation by various packages.
+For some specific lemmatization approaches with comparison, see https://www.machinelearningplus.com/nlp/lemmatization-examples-python/#wordnetlemmatizerwithappropriatepostag
