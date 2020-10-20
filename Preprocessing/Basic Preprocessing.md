@@ -102,7 +102,7 @@ def remove_whitespace(text):
     return  " ".join(text.split()) 
 ```
 ## 7) Tokenization
-see [tokenization part](https://github.com/squ-kei/NLP/edit/main/Preprocessing/Tokenization.md)
+see [tokenization part](https://github.com/squ-kei/NLP/blob/main/Preprocessing/Tokenization.md)
 
 ## 8) Common phrases
 Use gensim package to catch common phrases. https://radimrehurek.com/gensim/models/phrases.html    
@@ -146,7 +146,7 @@ example:
 ['trees_graph', 'minors']
 ```
 ## 9) Padding
-See [tokenization part](https://github.com/squ-kei/NLP/edit/main/Preprocessing/Tokenization.md)
+See [tokenization part](https://github.com/squ-kei/NLP/blob/main/Preprocessing/Tokenization.md)
 ## 10) Remove stopwords
 Be careful when remove stopwords since this might completely change the meaning of a sentence. Only do this with conventional count based method. Deep learning approach generally does not require removing stopwords. **Do this after tokenization.**   
 With NLTK:
