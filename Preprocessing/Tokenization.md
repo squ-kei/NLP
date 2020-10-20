@@ -1,3 +1,13 @@
+# Tokenization strategies    
+Basically we have 4 different strategies as listed below:   
+1.into sentences    
+2.into words   
+3.into characters   
+4.into subwords     
+
+Tokenize into sentences
+
+
 text--->sequence of integer --> embedded sequence
      |->dict(word:index)-->match pretrained embeddings-->dict(index:embedding vector)
      
