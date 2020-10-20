@@ -4,11 +4,14 @@ Basically we have 4 different strategies as listed below:
 2.into words   
 3.into characters   
 4.into subwords     
-Different models/tasks require different kind of input. Some need list of sentences like w2v. Some need list of lists of words. Some need subwords tokens.      
+**Different models/tasks require different kind of input.** Some need list of sentences like w2v. Some need list of lists of words. Some need subwords tokens.      
 Check carefully when use pretrained models as they generally require different input format.        
 
 There are a lot of tools that can be used to tokenize text. Some common ones are NLTK, GENSIM, SPACY, TEXTBLOB, keras.preprocessing.text.Tokenizer 
-(these mainly use space or rule based tokenization) or subwords tokenization implement by [transformer package](https://huggingface.co/transformers/tokenizer_summary.html) 
+(these mainly use space or rule based tokenization) or subwords tokenization with [transformers package](https://huggingface.co/transformers/tokenizer_summary.html) provided by
+hugging face.       
+
+This document will mainly focus on keras and transformers implementation as they are the most common tokenization tools for deep learning nlp models.
 
 ## Tokenize into sentences    
 This is generally require for word2vec. Below is an example using NLTK:
