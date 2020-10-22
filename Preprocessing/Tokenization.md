@@ -9,7 +9,12 @@ Check carefully when use pretrained models as they generally require different i
 
 There are a lot of tools that can be used to tokenize text. Some common ones are NLTK, GENSIM, SPACY, TEXTBLOB, keras.preprocessing.text.Tokenizer 
 (these mainly use space or rule based tokenization) or subwords tokenization with [transformers package](https://huggingface.co/transformers/tokenizer_summary.html) provided by
-hugging face.       
+hugging face. 
+
+Why we need tokenization?
+Because most NLP models process input text as a sequence of words or tokens. Tokenization is responsible for decomposing whole chunk of text into smaller units(tokens).
+After that, usually each token will be converted into a numerical representation(integer index, one-hot enocoding, embedding,etc.) such that it can be recognized and understood 
+by machines.
 
 This document will mainly focus on keras and transformers implementation as they are the most common tokenization tools for deep learning nlp models.
 
@@ -25,6 +30,14 @@ from nltk import sent_tokenize
 sentences = sent_tokenize(text)
 print(sentences[0])
 ```
+
+## Tokenize into words
+Several different packages will do the work including NLTK, gensim, spaCy, and keras.preprocessing.text.tokenizer.
+Keras tokenizer is
+
+
+
+
 
 
 text--->sequence of integer --> embedded sequence
