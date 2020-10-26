@@ -92,3 +92,8 @@ Output:
 ```
 **it will ignore unknown words if not set oov_token**
 keras tokenizer index start from 1 not 0
+
+
+
+What does a pretrained subword tokenizer does when applied to new data?
+It will save the vocabulary and merge rule when training. While applied to new data, it does the same merge based upon the merge rule(vocabulary and corresponding count/probability obtained from training).
