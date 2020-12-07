@@ -90,8 +90,8 @@ Output:
 
         word_index :  {'the': 1, 'earth': 2, 'is': 3, 'an': 4, 'awesome': 5, 'place': 6, 'live': 7}
 ```
-**it will ignore unknown words if not set oov_token**
-keras tokenizer index start from 1 not 0
+**it will ignore unknown words if not set oov_token**      
+keras tokenizer index start from 1 not 0, 0 is for padding.
 
 
 
