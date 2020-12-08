@@ -21,7 +21,7 @@ This code will keep the 20000 most frequent words when transform *x_train* into 
 ```python
 model.fit(train_dataset.shuffle(1000).batch(16), batch_size=16, epochs=3,validation_data=val_dataset.batch(16))
 ```
-With the above code, two thing need to be careful.     
+With the above code, two things need to be careful.     
 First, if dataset has *batch()* method while *fit* also has *batch_size* parameter, they will be multiplied to produce the final batch size. 16*16=256 for the above example.     
 Second, basically you need to have the validation set with the same batch size or else it will raise a *ValueError: logits and labels must have the same shape ((256, 6) vs (6, 1))*. So for the above example, change it to
 ```python
