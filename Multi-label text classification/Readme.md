@@ -16,3 +16,18 @@ tokenizer.fit_on_texts(all_text_sequences)
 tokenizer.texts_to_sequences(x_train)
 ```
 This code will keep the 20000 most frequent words when transform *x_train* into integer values, if oov_token is not set, all words beyond the 20000 vocabulary will be omitted. While *tokenizer.word_index* will keep the full vocabulary of *all_text_sequences*
+
+# A thing with tf.data.Dataset
+```python
+model.fit(train_dataset.shuffle(1000).batch(16), batch_size=16, epochs=3,validation_data=val_dataset.batch(16))
+```
+With the above code, two thing need to be careful.     
+First, if dataset has *batch()* method while *fit* also has *batch_size* parameter, they will be multiplied to produce the final batch size. 16*16=256 for the above example.     
+Second, basically you need to have the validation set with the same batch size or else it will raise a *ValueError: logits and labels must have the same shape ((256, 6) vs (6, 1))*. So for the above example, change it to
+```python
+model.fit(train_dataset.shuffle(1000).batch(16), batch_size=16, epochs=3,validation_data=val_dataset.batch(256))
+```
+or
+```python
+model.fit(train_dataset.shuffle(1000).batch(16), epochs=3,validation_data=val_dataset.batch(16))
+```
