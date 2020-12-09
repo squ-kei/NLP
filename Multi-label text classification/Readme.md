@@ -17,7 +17,7 @@ tokenizer.texts_to_sequences(x_train)
 ```
 This code will keep the 20000 most frequent words when transform *x_train* into integer values, if oov_token is not set, all words beyond the 20000 vocabulary will be omitted. While *tokenizer.word_index* will keep the full vocabulary of *all_text_sequences*
 
-# A thing with tf.data.Dataset
+# A thing about tf.data.Dataset
 ```python
 model.fit(train_dataset.shuffle(1000).batch(16), batch_size=16, epochs=3,validation_data=val_dataset.batch(16))
 ```
